@@ -1,15 +1,17 @@
-// /components/Card.js
-export default function Card({ title, subtitle, children, right }) {
+// components/Card.js
+export default function Card({ title, subtitle, action, children, className = '' }) {
   return (
-    <div className="card">
-      <div style={{display:'flex',justifyContent:'space-between',alignItems:'flex-start',gap:12}}>
-        <div>
-          {title && <h2>{title}</h2>}
-          {subtitle && <div className="muted" style={{marginTop:2}}>{subtitle}</div>}
+    <section className={`card ${className}`}>
+      {(title || action) && (
+        <div className="card__head">
+          <div>
+            {title && <h3 className="card__title">{title}</h3>}
+            {subtitle && <p className="card__subtitle">{subtitle}</p>}
+          </div>
+          {action && <div className="card__action">{action}</div>}
         </div>
-        {right || null}
-      </div>
-      <div style={{marginTop:14}}>{children}</div>
-    </div>
+      )}
+      <div className="card__body">{children}</div>
+    </section>
   );
 }
