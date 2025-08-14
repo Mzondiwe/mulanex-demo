@@ -1,2 +1,33 @@
-import { passports } from '../lib/flags'
-export default function Passports(){return (<div className='grid'>{passports.map(p=>(<div key={p.level} className='card' style={{gridColumn:'span 4'}}><h3>{p.level} Passport</h3><p className='sub'>Requirements: {p.requirements}</p><p className='sub'>Perks: {p.perks}</p><button className='btn'>Start</button></div>))}</div>)}
+// pages/passports.js
+import React from 'react';
+import { passports as passportsData, FEATURES } from '../lib/flags';
+
+export default function PassportsPage() {
+  const list = Array.isArray(passportsData) ? passportsData : [];
+
+  return (
+    <main style={{ padding: 24 }}>
+      <h1>Passports {FEATURES.PASSPORTS_ENABLED ? '' : '(disabled)'}</h1>
+
+      {list.length === 0 ? (
+        <p>No passports yet.</p>
+      ) : (
+        <ul>
+          {list.map(p => (
+            <li key={p.id} style={{ marginBottom: 12 }}>
+              <strong>{p.title}</strong> — Level {p.level}
+              <div>
+                <em>Requirements:</em>{' '}
+                {Array.isArray(p.requirements) ? p.requirements.join(', ') : '—'}
+              </div>
+              <div>
+                <em>Benefits:</em>{' '}
+                {Array.isArray(p.benefits) ? p.benefits.join(', ') : '—'}
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
+    </main>
+  );
+}
