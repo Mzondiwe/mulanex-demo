@@ -7,9 +7,7 @@ export default function PassportsPage() {
 
   return (
     <main style={{ padding: 24 }}>
-      <h1>
-        Passports {Flags.FEATURES?.PASSPORTS_ENABLED ? '' : '(disabled)'}
-      </h1>
+      <h1>Passports {Flags.FEATURES?.PASSPORTS_ENABLED ? '' : '(disabled)'}</h1>
 
       {list.length === 0 ? (
         <p>No passports yet.</p>
