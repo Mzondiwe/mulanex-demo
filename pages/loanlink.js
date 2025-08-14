@@ -1,1 +1,17 @@
-export default function LoanLink(){return (<section className='card'><h3>LoanLink</h3><p className='sub'>This demo screen simulates the instant handoff to the LendingScape backend with a secure POST.</p><div className='row'><div><div className='title'>Offer: Working Capital · up to 20,000 ZMW</div><div className='sub'>Based on your Passport level & behavior score.</div></div><button className='btn'>Apply (demo)</button></div><div className='row'><div className='title'>Documents</div><button className='btn ghost'>Upload (placeholder)</button></div></section>) }
+import Card from '../components/Card';
+import { loanProducts } from '../lib/data';
+
+export default function LoanLink(){
+  return (
+    <main className="container grid cols-3">
+      <Card title="LoanLink" subtitle="Apply in minutes">
+        <ul className="list">
+          {loanProducts.map(p => (
+            <li key={p.id}><b>{p.name}</b> — up to {p.max}, {p.tenor}, {p.rate}</li>
+          ))}
+        </ul>
+        <button className="button" style={{marginTop:12}}>Start Application (demo)</button>
+      </Card>
+    </main>
+  );
+}
