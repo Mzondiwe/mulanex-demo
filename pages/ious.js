@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ious as seed } from '@/lib/data'
+import { ious as seed } from '../lib/data'
 export default function IOUs(){
   const [rows,setRows]=useState(seed)
   const [form,setForm]=useState({from:'',to:'',amount:'',due:''})
