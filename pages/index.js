@@ -1,27 +1,19 @@
-// pages/index.js
-import { DEFAULT_FLAGS, loadFlags } from '../lib/flags';
+import { ious as seed } from '../lib/data';
 
 export default function Home() {
-  const flags = loadFlags(); // during SSR this returns DEFAULT_FLAGS
-
-  // Use optional chaining + nullish coalescing to avoid crashes
-  const toggles = flags?.FEATURE_TOGGLES ?? DEFAULT_FLAGS.FEATURE_TOGGLES;
-
-  const showIOU       = toggles.iou ?? true;
-  const showMissions  = toggles.missions ?? true;
-  const showPassports = toggles.passports ?? true;
-  const showBNPL      = toggles.bnpl ?? true;
-  const showLoanLink  = toggles.loanlink ?? true;
+  const list = Array.isArray(seed) ? seed : [];
 
   return (
-    <main>
+    <main style={{ padding: 24 }}>
       <h1>MulaNEX</h1>
-
-      {showIOU && <section>{/* IOU CTA / list */}</section>}
-      {showMissions && <section>{/* Missions CTA / list */}</section>}
-      {showPassports && <section>{/* Passports CTA / list */}</section>}
-      {showBNPL && <section>{/* BNPL CTA / list */}</section>}
-      {showLoanLink && <section>{/* LoanLink CTA */}</section>}
+      <h2>Recent IOUs</h2>
+      <ul>
+        {list.map(i => (
+          <li key={i.id}>
+            {i.from} → {i.to} • {i.amount} • due {i.due} • {i.status}
+          </li>
+        ))}
+      </ul>
     </main>
   );
 }
