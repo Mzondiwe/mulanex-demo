@@ -1,0 +1,2 @@
+import { bnplDeals } from '@/lib/data'
+export default function BNPL(){return (<div className='grid' style={{gridTemplateColumns:'repeat(3,1fr)'}}>{bnplDeals.map(d=>(<div key={d.id} className='card'><div className='row'><div className='title'>{d.merchant}</div><span className='badge'>{d.apr} APR</span></div><div className='sub'>{d.item}</div><div className='row'><div className='stat'>{d.price.toLocaleString()} ZMW</div><button className='btn'>Apply</button></div><div className='sub'>Plan: {d.term}</div></div>))}</div>)}
