@@ -1,42 +1,106 @@
-/* /styles/globals.css */
+/* styles/globals.css */
+
+/* Premium Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
 :root{
-  --bg1:#0b1420;
-  --bg2:#0e2034;
-  --card:rgba(255,255,255,0.06);
-  --card-bd:rgba(255,255,255,0.12);
-  --text:#e9f0f6;
-  --muted:#9fb3c8;
-  --accent:#5aa0ff;
-  --accent-2:#7d5cff;
+  --bg: #0c1020;
+  --bg-2: #0f1428;
+  --card: #121733;
+  --muted: #96a1c0;
+  --text: #e8ecff;
+  --text-2: #cdd6ff;
+  --brand: #7a6cff;     /* MulaNEX purple */
+  --brand-2: #9f8cff;   /* lighter accent */
+  --green: #37d67a;
+  --amber: #ffb020;
+  --red: #ff6978;
+  --ring: rgba(122,108,255,.35);
+  --radius: 14px;
+  --shadow: 0 10px 40px rgba(0,0,0,.35);
 }
 
-html,body{padding:0;margin:0;background:
- radial-gradient(1000px 600px at 10% -10%, #162840 0%, transparent 60%),
- radial-gradient(900px 600px at 100% 0%, #1a2d4a 0%, transparent 60%),
- linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 100%);
-color:var(--text);font-family:Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";}
+*{ box-sizing: border-box }
+html,body{ padding:0; margin:0; background: radial-gradient(1200px 800px at 80% -10%, #1a1f46 0%, #0c1020 55%) no-repeat, var(--bg); color: var(--text); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+a{ color: inherit; text-decoration: none }
+.container{ width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 20px }
 
-a{color:inherit;text-decoration:none}
-*{box-sizing:border-box}
+h1{ font-size: 32px; line-height: 1.15; margin: 8px 0 18px }
+h2{ font-size: 24px; margin: 10px 0 }
+h3{ font-size: 18px; margin: 0 0 6px }
+p{ color: var(--text-2) }
 
-.container{max-width:1080px;margin:40px auto;padding:0 20px;}
-.nav{display:flex;gap:12px;align-items:center;padding:18px 20px;border-bottom:1px solid rgba(255,255,255,0.08);}
-.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;}
-.badge{padding:6px 10px;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;font-weight:700}
+.nav{
+  position: sticky; top:0; z-index:10; background: rgba(10,14,32,.65);
+  backdrop-filter: saturate(140%) blur(18px); border-bottom: 1px solid rgba(122,108,255,.12);
+}
+.nav__inner{ display:flex; align-items:center; justify-content:space-between; height:64px }
+.brand{ display:flex; align-items:center; gap:10px }
+.brand__logo{
+  display:grid; place-items:center; width:34px; height:34px; border-radius:10px;
+  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-2) 100%);
+  color:#0c0f1f; font-weight:800;
+  box-shadow: 0 8px 26px var(--ring);
+}
+.brand__name{ font-weight:800; letter-spacing:.2px }
+.nav__links{ display:flex; gap:8px; flex-wrap:wrap }
+.nav__link{
+  padding:8px 12px; border-radius:12px; color:var(--text-2);
+}
+.nav__link:hover{ background: rgba(122,108,255,.12); color:#fff }
 
-.tabs{display:flex;gap:10px;flex-wrap:wrap}
-.tab{padding:8px 14px;border-radius:14px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);color:var(--text);font-weight:600}
-.tab.active{background:linear-gradient(90deg,var(--accent),var(--accent-2))}
-.grid{display:grid;gap:18px}
-.grid.cols-3{grid-template-columns:repeat(3,1fr)}
-@media (max-width:900px){.grid.cols-3{grid-template-columns:1fr}}
+main{ padding: 28px 0 60px }
 
-.card{background:var(--card);border:1px solid var(--card-bd);border-radius:14px;padding:20px;backdrop-filter: blur(8px);}
-.card h2{margin:0 0 8px 0;font-size:22px}
-.muted{color:var(--muted)}
-.kpi{font-size:28px;font-weight:800;letter-spacing:.3px}
+.grid{ display:grid; gap:18px }
+.grid--3{ grid-template-columns: 1fr; }
+@media (min-width: 860px){ .grid--3{ grid-template-columns: 1.1fr .9fr .9fr } }
 
-.list{padding-left:18px;line-height:1.9}
-.button{display:inline-block;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent-2));font-weight:700;color:white;border:none;cursor:pointer}
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)) , var(--card);
+  border: 1px solid rgba(122,108,255,.12);
+  border-radius: var(--radius); box-shadow: var(--shadow);
+}
+.card__head{ display:flex; align-items:center; justify-content:space-between; padding:18px 18px 0 }
+.card__title{ margin:0; font-weight:700 }
+.card__subtitle{ margin:6px 0 0; color:var(--muted) }
+.card__body{ padding:18px }
 
-.footer{opacity:.7;text-align:center;margin:60px 0 30px}
+.list{ margin:0; padding-left:18px }
+.list li{ margin:10px 0; color: var(--text-2) }
+.right{ text-align:right }
+
+.badge{
+  font-size:12px; font-weight:700; padding:6px 10px; border-radius:14px; letter-spacing:.2px;
+  border:1px solid transparent; display:inline-block;
+}
+.badge--neutral{ background: rgba(122,108,255,.12); color:#fff; border-color: rgba(122,108,255,.22) }
+.badge--success{ background: rgba(55,214,122,.16); color:#dbffe8; border-color: rgba(55,214,122,.35) }
+.badge--warning{ background: rgba(255,176,32,.16); color:#fff1d6; border-color: rgba(255,176,32,.35) }
+.badge--danger{ background: rgba(255,105,120,.18); color:#ffe4e7; border-color: rgba(255,105,120,.35) }
+
+.btn{
+  appearance:none; border:0; cursor:pointer;
+  padding:10px 14px; border-radius:12px; font-weight:700; transition:.2s transform, .2s box-shadow, .2s background;
+}
+.btn--primary{
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  color:#0c0f1f; box-shadow: 0 10px 28px var(--ring);
+}
+.btn--primary:hover{ transform: translateY(-1px) }
+.btn--ghost{ background: rgba(255,255,255,.06); color:#fff }
+.btn--ghost:hover{ background: rgba(255,255,255,.1) }
+
+.progress{ width:100%; height:10px; background: rgba(255,255,255,.06); border-radius:999px; overflow:hidden; border:1px solid rgba(255,255,255,.08) }
+.progress__bar{
+  height:100%; background: linear-gradient(90deg, var(--green), var(--brand));
+  box-shadow: inset 0 0 10px rgba(255,255,255,.2);
+}
+
+.form{ display:grid; gap:12px }
+.input{
+  width:100%; padding:12px 14px; border-radius:12px; background: rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1); color:#fff; outline:none;
+}
+.input::placeholder{ color: #98a1c7 }
+
+.footer{ margin-top:40px; color:var(--muted); text-align:center }
