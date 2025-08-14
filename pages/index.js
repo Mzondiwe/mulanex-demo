@@ -1,4 +1,4 @@
-import { ious, missions, bnplDeals } from '@/lib/data'
+import { ious, missions, bnplDeals } from '../lib/data'
 
 export default function Home({ flags }){
   return (
