@@ -1,13 +1,15 @@
 // pages/passports.js
 import React from 'react';
-import { passports as passportsData, FEATURES } from '../lib/flags';
+import * as Flags from '../lib/flags';
 
 export default function PassportsPage() {
-  const list = Array.isArray(passportsData) ? passportsData : [];
+  const list = Array.isArray(Flags.passports) ? Flags.passports : [];
 
   return (
     <main style={{ padding: 24 }}>
-      <h1>Passports {FEATURES.PASSPORTS_ENABLED ? '' : '(disabled)'}</h1>
+      <h1>
+        Passports {Flags.FEATURES?.PASSPORTS_ENABLED ? '' : '(disabled)'}
+      </h1>
 
       {list.length === 0 ? (
         <p>No passports yet.</p>
