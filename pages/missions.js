@@ -1,26 +1,17 @@
-// pages/missions.js
-import React from 'react';
-import * as Flags from '../lib/flags';
+import { missions } from '../lib/data';
 
-export default function MissionsPage() {
-  const list = Array.isArray(Flags.missions) ? Flags.missions : [];
-
+export default function Missions() {
+  const list = Array.isArray(missions) ? missions : [];
   return (
     <main style={{ padding: 24 }}>
-      <h1>Missions {Flags.FEATURES?.MISSIONS_ENABLED ? '' : '(disabled)'}</h1>
-
-      {list.length === 0 ? (
-        <p>No missions yet.</p>
-      ) : (
-        <ul>
-          {list.map(m => (
-            <li key={m.id} style={{ marginBottom: 8 }}>
-              <strong>{m.title}</strong> — Reward: {m.reward}{' '}
-              {m.active ? '(active)' : '(inactive)'}
-            </li>
-          ))}
-        </ul>
-      )}
+      <h1>Missions</h1>
+      <ul>
+        {list.map(m => (
+          <li key={m.id}>
+            {m.title} — {m.reward} ({m.status})
+          </li>
+        ))}
+      </ul>
     </main>
   );
 }
