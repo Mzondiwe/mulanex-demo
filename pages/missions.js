@@ -1,2 +1,2 @@
-import { missions } from '@/lib/data'
+import { missions } from '../lib/flags'
 export default function Missions(){return (<section className='card'><h3>Missions</h3><div className='list'>{missions.map(m=>(<div key={m.id} className='row'><div><div className='title'>{m.title}</div><div className='sub'>{m.reward} · {m.status}</div></div><button className='btn'>Join</button></div>))}</div></section>)}
