@@ -1,33 +1,17 @@
-// pages/passports.js
-import React from 'react';
-import * as Flags from '../lib/flags';
+import { passports } from '../lib/data';
 
-export default function PassportsPage() {
-  const list = Array.isArray(Flags.passports) ? Flags.passports : [];
-
+export default function Passports() {
+  const list = Array.isArray(passports) ? passports : [];
   return (
     <main style={{ padding: 24 }}>
-      <h1>Passports {Flags.FEATURES?.PASSPORTS_ENABLED ? '' : '(disabled)'}</h1>
-
-      {list.length === 0 ? (
-        <p>No passports yet.</p>
-      ) : (
-        <ul>
-          {list.map(p => (
-            <li key={p.id} style={{ marginBottom: 12 }}>
-              <strong>{p.title}</strong> — Level {p.level}
-              <div>
-                <em>Requirements:</em>{' '}
-                {Array.isArray(p.requirements) ? p.requirements.join(', ') : '—'}
-              </div>
-              <div>
-                <em>Benefits:</em>{' '}
-                {Array.isArray(p.benefits) ? p.benefits.join(', ') : '—'}
-              </div>
-            </li>
-          ))}
-        </ul>
-      )}
+      <h1>Passports</h1>
+      <ul>
+        {list.map(p => (
+          <li key={p.level}>
+            <strong>{p.level}</strong>: {p.requirements} — {p.perks}
+          </li>
+        ))}
+      </ul>
     </main>
   );
 }
