@@ -1,8 +1,8 @@
-import '@/styles/globals.css'
+import '../styles/globals.css'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { loadFlags, saveFlags, DEFAULT_FLAGS } from '@/lib/flags'
+import { loadFlags, saveFlags, DEFAULT_FLAGS } from '../lib/flags'
 
 function Nav({ active }){
   const tabs=[['Home','/'],['IOUs','/ious'],['Missions','/missions'],['Passports','/passports'],['BNPL','/bnpl'],['LoanLink','/loanlink'],['Settings','/settings']]
