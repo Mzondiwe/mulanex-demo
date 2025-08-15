@@ -1,3 +1,6 @@
 [build]
   command = "npm run build"
-  publish = "out"
+  publish = "out"          # Netlify should serve the static output folder
+
+# IMPORTANT: we are NOT using the Netlify Next.js plugin for SSR here.
+# This app is exported statically via "next export".
